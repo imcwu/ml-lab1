@@ -1,0 +1,188 @@
+https://github.com/imcwu/ml-lab1
+---
+title: "Lab 1 Code"
+format:
+    html:
+        code-fold: true
+echo: true
+fig-height: 3.5
+fig-width: 6
+---
+# Task 1
+The aesthetics being used on this data visualization are points shaped as circles. Each circle represents a different country, and their position on the graph represents that country's average income and life expectancy for the year 2010. (The X axis of the graph is income and the Y axis is life expectancy) The dimension (size) of each circle is determined by the population of the country (the larger the circle is, the more populated that country is). The color of the circle represents the geographical region of that country. There is also a small map legend in the right corner that tells us which region a country is located in.
+
+```{python}
+# import the q1data.csv dataset
+import pandas as pd
+df = pd.read_csv("/Users/christinewu/Desktop/academic resources/GSB-544/GSB-544/dataLab1/q1data.csv")
+```
+
+```{python}
+# recreate the plot as best as you can using plotnine
+import pandas as pd
+from plotnine import ggplot, geom_point, aes, labs, theme, scale_x_log10, scale_y_continuous, geom_boxplot
+from plotnine.scales import scale_fill_manual, scale_size_continuous
+
+region_colors = {
+    "americas": "lawngreen",
+    "europe": "yellow",
+    "africa": "cyan",
+    "asia": "deeppink"
+}
+
+my_plot1 = (
+    ggplot(df, aes(x = "income", y = "life_exp", fill = "four_regions"))
+    + geom_point(aes(size = "population")) 
+    + labs(x= "Income", y= "Life Expectancy",title= "Task 1")
+    + theme(legend_position='none')
+    + scale_x_log10(
+        limits=(0, 128000),
+        breaks=[500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 128000]
+    )
+    + scale_y_continuous(
+        limits=(20, 90),
+        breaks=[20, 30, 40, 50, 60 , 70, 80 , 90]
+    )
+    + scale_fill_manual(values=region_colors)
+    + scale_size_continuous(range=[1, 20])
+)
+
+
+my_plot1
+```
+```{python}
+# What other geometries could you use here besides geom_point?
+# We could use geom_boxplot, but this isn't as good for visualization because we can't compare two variables at once (can only compare one variable, in this case, life expectancy) or see the sizes of the populations for each country (as it would be best to sort by region)
+
+df_clean = df.dropna(subset=["four_regions", "life_exp"])
+
+region_colors = {
+    "americas": "lawngreen",
+    "europe": "yellow",
+    "africa": "cyan",
+    "asia": "deeppink"
+}
+
+ggplot(df_clean, aes(x = "four_regions", y = "life_exp", fill = "four_regions")) + geom_boxplot() + scale_fill_manual(values=region_colors)
+```
+
+# Task 2
+The aesthetics being used here are points shaped as circles. Each circle represents a different country, and their position on the graph represents the values of imports and exports as a percentage of their GDP for the year 1997. The dimension (size) of each circle is determined by the amount of energy use for the country (the larger the circle is, the more energy that country uses). The color of the circle represents the geographical region of that country. There is also a small map legend in the right corner that tells us which region a country is located in.
+
+```{python}
+# import the q2data.csv dataset
+df2 = pd.read_csv("/Users/christinewu/Desktop/academic resources/GSB-544/GSB-544/dataLab1/q2data.csv")
+```
+```{python}
+# recreate the plot as best as you can using plotnine
+import pandas as pd
+from plotnine import ggplot, geom_point, aes, labs, theme, scale_x_continuous, scale_y_continuous
+from plotnine.scales import scale_fill_manual, scale_size_continuous
+
+# cleaning up the data
+energy_str = df2["energy"].astype(str).str.lower().str.strip()
+df2["energy"] = (
+    energy_str
+    .str.replace(r"k$", "e3", regex=True) 
+    .astype(float)
+)
+df2_clean = df2.dropna(subset=["exports", "imports", "energy", "four_regions"])
+
+region_colors = {
+    "americas": "lawngreen",
+    "europe": "yellow",
+    "africa": "cyan",
+    "asia": "deeppink"
+}
+
+my_plot2 = (
+    ggplot(df2_clean, aes(x = "exports", y = "imports", fill = "four_regions"))
+    + geom_point(aes(size = "energy")) 
+    + labs(x= "Exports (% of GDP)", y= "Imports (% of GDP)",title= "Task 2")
+    + theme(legend_position='none')
+    + scale_x_continuous(
+        limits=(0, 200),
+        breaks=[20, 40, 60, 80, 100, 120, 140, 160, 180, 200]
+    )
+    + scale_y_continuous(
+        limits=(0, 200),
+        breaks=[20, 40, 60, 80, 100, 120, 140, 160, 180, 200]
+    )
+    + scale_fill_manual(values=region_colors)
+    + scale_size_continuous(range=[1, 20])
+)
+
+my_plot2
+```
+```{python}
+# What other geometries could you use here besides geom_point?
+# We could use geom_boxplot, but this isn't as good for visualization because we can't compare two variables at once (can only compare one variable, in this case, exports (% of GDP)) or see the amounts of energy use for each country (as it would be best to sort by region)
+
+df2_clean = df2.dropna(subset=["four_regions", "exports"])
+
+region_colors = {
+    "americas": "lawngreen",
+    "europe": "yellow",
+    "africa": "cyan",
+    "asia": "deeppink"
+}
+
+ggplot(df2_clean, aes(x = "four_regions", y = "exports", fill = "four_regions")) + geom_boxplot() + scale_fill_manual(values=region_colors)
+```
+
+# Task 3
+The aesthetics being used in the plot are points shaped as circles. Each circle represents a country, and the position of each circle represents what percentage of that country's population uses the internet and also the country's GDP per capita (for the year 2001). The dimensions of each circle is determined by the amount of average income for that country (the greater the average income, the greater the size of the circle). The color of the circles are determined by which region the country lies in.
+
+```{python}
+# import the q3data.csv dataset
+import pandas as pd
+df3 = pd.read_csv("/Users/christinewu/Desktop/academic resources/GSB-544/GSB-544/dataLab1/q3data.csv")
+```
+```{python}
+# recreate the plot as best as you can using plotnine
+import pandas as pd
+from plotnine import ggplot, geom_point, aes, labs, theme, scale_x_continuous, scale_y_log10
+from plotnine.scales import scale_fill_manual, scale_size_continuous
+# clean data
+df3_clean = df3.dropna(subset=["internet_users", "gdp", "four_regions", "income"])
+region_colors = {
+    "americas": "lawngreen",
+    "europe": "yellow",
+    "africa": "cyan",
+    "asia": "deeppink"
+}
+
+my_plot3 = (
+    ggplot(df3_clean, aes(x = "internet_users", y = "gdp", fill = "four_regions"))
+    + geom_point(aes(size = "income")) 
+    + labs(x= "Internet users", y= "GDP",title= "Task 3")
+    + theme(legend_position='none')
+    + scale_x_continuous(
+        limits=(0, 100),
+        breaks=[20, 40, 60, 80, 100]
+    )
+    + scale_y_log10(
+        limits=(0, 200000),
+        breaks=[200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000]
+    )
+    + scale_fill_manual(values=region_colors)
+    + scale_size_continuous(range=[1, 20])
+)
+
+my_plot3
+```
+```{python}
+# What other geometries could you use here besides geom_point?
+# We could use geom_boxplot, but this isn't as good for visualization because we can't compare two variables at once (can only compare one variable, in this case, internet users) or see the average incomes for each country (as it would be best to sort by region). Additionally, there's outliers present that skew the distribution.
+
+df3_clean = df3.dropna(subset=["four_regions", "internet_users"])
+
+region_colors = {
+    "americas": "lawngreen",
+    "europe": "yellow",
+    "africa": "cyan",
+    "asia": "deeppink"
+}
+
+ggplot(df3_clean, aes(x = "four_regions", y = "internet_users", fill = "four_regions")) + geom_boxplot() + scale_fill_manual(values=region_colors)
+```
