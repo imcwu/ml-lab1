@@ -1,4 +1,4 @@
-https://github.com/imcwu/ml-lab1
+https://github.com/imcwu/ml-lab1/blob/main/Lab1.qmd
 ---
 title: "Lab 1 Code"
 format:
