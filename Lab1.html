@@ -98,10 +98,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>https://github.com/imcwu/ml-lab1</p>
 <section id="task-1" class="level1">
 <h1>Task 1</h1>
 <p>The aesthetics being used on this data visualization are points shaped as circles. Each circle represents a different country, and their position on the graph represents that country’s average income and life expectancy for the year 2010. (The X axis of the graph is income and the Y axis is life expectancy) The dimension (size) of each circle is determined by the population of the country (the larger the circle is, the more populated that country is). The color of the circle represents the geographical region of that country. There is also a small map legend in the right corner that tells us which region a country is located in.</p>
-<div id="c1343b04" class="cell" data-execution_count="1">
+<div id="24c26b32" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the q1data.csv dataset</span></span>
@@ -109,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"/Users/christinewu/Desktop/academic resources/GSB-544/GSB-544/dataLab1/q1data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="b073e503" class="cell" data-execution_count="2">
+<div id="7bd87512" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recreate the plot as best as you can using plotnine</span></span>
@@ -156,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="4fa6d0e2" class="cell" data-execution_count="3">
+<div id="e6ff35bc" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What other geometries could you use here besides geom_point?</span></span>
@@ -185,14 +186,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="task-2" class="level1">
 <h1>Task 2</h1>
 <p>The aesthetics being used here are points shaped as circles. Each circle represents a different country, and their position on the graph represents the values of imports and exports as a percentage of their GDP for the year 1997. The dimension (size) of each circle is determined by the amount of energy use for the country (the larger the circle is, the more energy that country uses). The color of the circle represents the geographical region of that country. There is also a small map legend in the right corner that tells us which region a country is located in.</p>
-<div id="50245591" class="cell" data-execution_count="4">
+<div id="b2527555" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the q2data.csv dataset</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.read_csv(<span class="st">"/Users/christinewu/Desktop/academic resources/GSB-544/GSB-544/dataLab1/q2data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="2bb69dda" class="cell" data-execution_count="5">
+<div id="39211608" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recreate the plot as best as you can using plotnine</span></span>
@@ -243,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="bd89a846" class="cell" data-execution_count="6">
+<div id="a4d72e8f" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What other geometries could you use here besides geom_point?</span></span>
@@ -272,7 +273,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="task-3" class="level1">
 <h1>Task 3</h1>
 <p>The aesthetics being used in the plot are points shaped as circles. Each circle represents a country, and the position of each circle represents what percentage of that country’s population uses the internet and also the country’s GDP per capita (for the year 2001). The dimensions of each circle is determined by the amount of average income for that country (the greater the average income, the greater the size of the circle). The color of the circles are determined by which region the country lies in.</p>
-<div id="72274c26" class="cell" data-execution_count="7">
+<div id="2742551d" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the q3data.csv dataset</span></span>
@@ -280,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df3 <span class="op">=</span> pd.read_csv(<span class="st">"/Users/christinewu/Desktop/academic resources/GSB-544/GSB-544/dataLab1/q3data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cdd6c6c1" class="cell" data-execution_count="8">
+<div id="6d29a025" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recreate the plot as best as you can using plotnine</span></span>
@@ -326,7 +327,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="ca1f734a" class="cell" data-execution_count="9">
+<div id="56acdbba" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What other geometries could you use here besides geom_point?</span></span>
