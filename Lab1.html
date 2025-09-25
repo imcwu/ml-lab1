@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>lab1</title>
+<title>Lab 1 Code</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,19 +79,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lab 1 Code</h1>
+</div>
 
 
 
-<p>https://github.com/imcwu/ml-lab1/blob/main/Lab1.html # Task 1 The aesthetics being used on this data visualization are points shaped as circles. Each circle represents a different country, and their position on the graph represents that country’s average income and life expectancy for the year 2010. (The X axis of the graph is income and the Y axis is life expectancy) The dimension (size) of each circle is determined by the population of the country (the larger the circle is, the more populated that country is). The color of the circle represents the geographical region of that country. There is also a small map legend in the right corner that tells us which region a country is located in.</p>
-<div id="6118657d" class="cell" data-execution_count="147">
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>https://github.com/imcwu/ml-lab1/blob/main/Lab1.html</p>
+<section id="task-1" class="level1">
+<h1>Task 1</h1>
+<p>The aesthetics being used on this data visualization are points shaped as circles. Each circle represents a different country, and their position on the graph represents that country’s average income and life expectancy for the year 2010. (The X axis of the graph is income and the Y axis is life expectancy) The dimension (size) of each circle is determined by the population of the country (the larger the circle is, the more populated that country is). The color of the circle represents the geographical region of that country. There is also a small map legend in the right corner that tells us which region a country is located in.</p>
+<div id="daa6ec46" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the q1data.csv dataset</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"/Users/christinewu/Desktop/academic resources/GSB-544/GSB-544/dataLab1/q1data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-<div id="bf52a1dd" class="cell" data-execution_count="115">
+<div id="f2a87177" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recreate the plot as best as you can using plotnine</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, geom_point, aes, labs, theme, scale_x_log10, scale_y_continuous</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, geom_point, aes, labs, theme, scale_x_log10, scale_y_continuous, geom_boxplot, theme_minimal</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.scales <span class="im">import</span> scale_fill_manual, scale_size_continuous</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>region_colors <span class="op">=</span> {</span>
@@ -116,23 +140,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_fill_manual(values<span class="op">=</span>region_colors)</span>
 <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_size_continuous(<span class="bu">range</span><span class="op">=</span>[<span class="dv">1</span>, <span class="dv">20</span>])</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_minimal()</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>my_plot1.draw()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>my_plot1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
-<pre><code>/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/mizani/transforms.py:374: RuntimeWarning: divide by zero encountered in log10
-/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/plotnine/layer.py:372: PlotnineWarning: geom_point : Removed 4 rows containing missing values.</code></pre>
+<pre><code>/opt/anaconda3/lib/python3.13/site-packages/mizani/transforms.py:374: RuntimeWarning: divide by zero encountered in log10
+/opt/anaconda3/lib/python3.13/site-packages/plotnine/layer.py:372: PlotnineWarning: geom_point : Removed 4 rows containing missing values.</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab1_files/figure-html/cell-3-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="Lab1_files/figure-html/cell-3-output-2.png" width="576" height="336" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="85a1ff86" class="cell">
+<div id="247160c5" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What other geometries could you use here besides geom_point?</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We could use geom_boxplot, but this isn't as good for visualization because we can't compare two variables at once (can only compare one variable, in this case, life expectancy) or see the sizes of the populations for each country (as it would be best to sort by region)</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -145,23 +173,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"asia"</span>: <span class="st">"deeppink"</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>ggplot(df_clean, aes(x <span class="op">=</span> <span class="st">"four_regions"</span>, y <span class="op">=</span> <span class="st">"life_exp"</span>, fill <span class="op">=</span> <span class="st">"four_regions"</span>)) <span class="op">+</span> geom_boxplot() <span class="op">+</span> scale_fill_manual(values<span class="op">=</span>region_colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>ggplot(df_clean, aes(x <span class="op">=</span> <span class="st">"four_regions"</span>, y <span class="op">=</span> <span class="st">"life_exp"</span>, fill <span class="op">=</span> <span class="st">"four_regions"</span>)) <span class="op">+</span> geom_boxplot() <span class="op">+</span> scale_fill_manual(values<span class="op">=</span>region_colors) <span class="op">+</span> theme_minimal()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab1_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Lab1_files/figure-html/cell-4-output-1.png" width="576" height="336" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
 <section id="task-2" class="level1">
 <h1>Task 2</h1>
 <p>The aesthetics being used here are points shaped as circles. Each circle represents a different country, and their position on the graph represents the values of imports and exports as a percentage of their GDP for the year 1997. The dimension (size) of each circle is determined by the amount of energy use for the country (the larger the circle is, the more energy that country uses). The color of the circle represents the geographical region of that country. There is also a small map legend in the right corner that tells us which region a country is located in.</p>
-<div id="330fd26c" class="cell" data-execution_count="133">
+<div id="94c88976" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the q2data.csv dataset</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.read_csv(<span class="st">"/Users/christinewu/Desktop/academic resources/GSB-544/GSB-544/dataLab1/q2data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-<div id="eff7676a" class="cell" data-execution_count="137">
+<div id="2520bc3a" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recreate the plot as best as you can using plotnine</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, geom_point, aes, labs, theme, scale_x_continuous, scale_y_continuous</span>
@@ -198,18 +233,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_fill_manual(values<span class="op">=</span>region_colors)</span>
 <span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_size_continuous(<span class="bu">range</span><span class="op">=</span>[<span class="dv">1</span>, <span class="dv">20</span>])</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>my_plot2.draw()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_minimal()</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>my_plot2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab1_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Lab1_files/figure-html/cell-6-output-1.png" width="576" height="336" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="2538dcc3" class="cell" data-execution_count="159">
+<div id="babf3b64" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What other geometries could you use here besides geom_point?</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We could use geom_boxplot, but this isn't as good for visualization because we can't compare two variables at once (can only compare one variable, in this case, exports (% of GDP)) or see the amounts of energy use for each country (as it would be best to sort by region)</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -222,11 +261,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"asia"</span>: <span class="st">"deeppink"</span></span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>ggplot(df2_clean, aes(x <span class="op">=</span> <span class="st">"four_regions"</span>, y <span class="op">=</span> <span class="st">"exports"</span>, fill <span class="op">=</span> <span class="st">"four_regions"</span>)) <span class="op">+</span> geom_boxplot() <span class="op">+</span> scale_fill_manual(values<span class="op">=</span>region_colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>ggplot(df2_clean, aes(x <span class="op">=</span> <span class="st">"four_regions"</span>, y <span class="op">=</span> <span class="st">"exports"</span>, fill <span class="op">=</span> <span class="st">"four_regions"</span>)) <span class="op">+</span> geom_boxplot() <span class="op">+</span> scale_fill_manual(values<span class="op">=</span>region_colors) <span class="op">+</span> theme_minimal()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab1_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Lab1_files/figure-html/cell-7-output-1.png" width="576" height="336" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -235,12 +275,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="task-3" class="level1">
 <h1>Task 3</h1>
 <p>The aesthetics being used in the plot are points shaped as circles. Each circle represents a country, and the position of each circle represents what percentage of that country’s population uses the internet and also the country’s GDP per capita (for the year 2001). The dimensions of each circle is determined by the amount of average income for that country (the greater the average income, the greater the size of the circle). The color of the circles are determined by which region the country lies in.</p>
-<div id="adb5c467" class="cell" data-execution_count="139">
+<div id="cdf177a2" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the q3data.csv dataset</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df3 <span class="op">=</span> pd.read_csv(<span class="st">"/Users/christinewu/Desktop/academic resources/GSB-544/GSB-544/dataLab1/q3data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-<div id="4111bfd8" class="cell" data-execution_count="145">
+<div id="882998a7" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recreate the plot as best as you can using plotnine</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, geom_point, aes, labs, theme, scale_x_continuous, scale_y_log10</span>
@@ -269,21 +314,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_fill_manual(values<span class="op">=</span>region_colors)</span>
 <span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_size_continuous(<span class="bu">range</span><span class="op">=</span>[<span class="dv">1</span>, <span class="dv">20</span>])</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>my_plot3.draw()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_minimal()</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>my_plot3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
-<pre><code>/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/mizani/transforms.py:374: RuntimeWarning: divide by zero encountered in log10</code></pre>
+<pre><code>/opt/anaconda3/lib/python3.13/site-packages/mizani/transforms.py:374: RuntimeWarning: divide by zero encountered in log10</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab1_files/figure-html/cell-9-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="Lab1_files/figure-html/cell-9-output-2.png" width="576" height="336" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="fe04eafb" class="cell">
+<div id="c978701b" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What other geometries could you use here besides geom_point?</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We could use geom_boxplot, but this isn't as good for visualization because we can't compare two variables at once (can only compare one variable, in this case, internet users) or see the average incomes for each country (as it would be best to sort by region). Additionally, there's outliers present that skew the distribution.</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -296,11 +345,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"asia"</span>: <span class="st">"deeppink"</span></span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>ggplot(df3_clean, aes(x <span class="op">=</span> <span class="st">"four_regions"</span>, y <span class="op">=</span> <span class="st">"internet_users"</span>, fill <span class="op">=</span> <span class="st">"four_regions"</span>)) <span class="op">+</span> geom_boxplot() <span class="op">+</span> scale_fill_manual(values<span class="op">=</span>region_colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>ggplot(df3_clean, aes(x <span class="op">=</span> <span class="st">"four_regions"</span>, y <span class="op">=</span> <span class="st">"internet_users"</span>, fill <span class="op">=</span> <span class="st">"four_regions"</span>)) <span class="op">+</span> geom_boxplot() <span class="op">+</span> scale_fill_manual(values<span class="op">=</span>region_colors) <span class="op">+</span> theme_minimal()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab1_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Lab1_files/figure-html/cell-10-output-1.png" width="576" height="336" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -709,6 +759,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
   </script>
 </div> <!-- /content -->
+
 
 
 
